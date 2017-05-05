@@ -3,61 +3,14 @@
         <title>Locations List</title>
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
         <meta charset="utf-8">
-         <style>
-      #map {
-        height: 100%;
-      }
-      #infowindow-content .title {
-        font-weight: bold;
-      }
-
-      #infowindow-content {
-        display: none;
-      }
-
-      #map #infowindow-content {
-        display: inline;
-      }
-
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
-
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
-
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        margin-top: 4px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
-
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
-
-      #target {
-        width: 345px;
-      }
-    </style>
+        <link rel="stylesheet" href="styling.css"/>
 </head>
 <body>
-        <h1>Full Locations List</h1>
+        <h1 style="text-align:center;">Collaborative Google Maps</h1>
+        <p style="text-align:center; text-decoration:none">
+                <a class="link" href="tutorial.html">Tutorial</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="link" href="maps.php">Map</a>
+        </p>
         <p id="list" style="display:none">
         <?php
         //PHP code is adapted from John Phillips' work
@@ -138,7 +91,7 @@
                 }
         }
         //here is our SQL query statement
-        $q = "select * from locations";
+        $q = "select * from locations order by id desc";
 
         $i = 0;
         //execute query and display the results
@@ -149,23 +102,30 @@
          
         ?>
         </p>
-        <div id="showlist"></div>
-        <input id="pac-input" type="text" class="controls" placeholder="Search Box"/>
-        <div id="map" style="width:100%; height:500px;"></div>
-        <form method="post" name="addLocation">
+        <div id="leftContainer">
+        <div id="showlist"><h3 id="listHead">Locations<h3></div>
+        <h3 style="text-align:center">Add Location</h3>
+        <form id="add" method="post" name="addLocation">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name"/>
-                <label for="description">Description:</label>
+                <label for="description"><br><br>Description:</label>
                 <input type="text" id="description" name="description"/>
-                <label for="latitude">Lat:</label>
+                <label for="latitude"><br><br>Lat:</label>
                 <input type="text" id="latitude" name="latitude" readonly/>
-                <label for="longitude">Lng:</label>
+                <label for="longitude"><br><br>Lng:</label>
                 <input type="text" id="longitude" name="longitude" readonly/>
-                <label for="zoom">Zoom:</label>
+                <label for="zoom"><br><br>Zoom:</label>
                 <input type="text"  id="zoom" name="zoom" readonly/>
-                <button type="submit" name="submit" value="Submit Location">Submit</button>
-                <button type ="reset">Reset</button>
+                <div style="display:inline;margin-top:15px;">
+                  <button id="submit" type="submit" name="submit" value="Submit Location">Add Location</button>
+                  <button id="reset" type ="reset">Clear</button>
+                </div>
         </form>
+        </div>
+        <input id="pac-input" type="text" class="controls" placeholder="Search Box"/>
+        <div id="map"></div>                
+        
+
         <script>
                 //initializes the map and sets defaults
                 var map;

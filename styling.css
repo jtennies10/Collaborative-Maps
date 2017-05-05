@@ -1,0 +1,68 @@
+#pac-input {
+    margin-top: 10px;
+}
+
+#showlist {
+    overflow-y: scroll;
+    height: 55%;
+    vertical-align: top;
+}
+
+#map {
+    width: 70%;
+    height: 85%;
+    float: right;
+}
+
+#showlist p {
+    text-decoration: underline;
+}
+
+#showlist p:hover {
+    color: black;
+}
+
+#leftContainer {
+    display: inline-block;
+    width: 23%;
+    height: 80%;
+    margin-right: 4%;
+}
+
+form {
+    height: 30%;
+}
+
+input {
+    width: 70%;
+}
+
+form input {
+    float: right;
+}
+
+button {
+    background-color: black;
+    color: white;
+}
+
+#submit {
+    text-align: center;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+body {
+    background-color: #339933;
+    color: white;
+}
+
+.link {
+    color: white;
+}
+
+#listHead {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
